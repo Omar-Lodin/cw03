@@ -25,7 +25,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   final _questionController = TextEditingController();
   bool _isHintRequested = false;
   String? _reply;
-
+  String? e;
   @override
   void dispose() {
     _questionController.dispose();
@@ -50,7 +50,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
         _reply = reply;
       });
     } on FirebaseFunctionsException catch (e) {
-      debugPrint('Quest Coach Request failed');
+      debugPrint('Quest Coach failed: ${e.code} — ${e.message}');
       if (!mounted) return;
       setState(() => _reply = 'Quest Coach not available. Please try again.');
     } finally {
